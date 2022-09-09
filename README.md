@@ -22,7 +22,8 @@ In addition to introducing Spock dependencies, add dependencies on spock-mockfre
 <dependency>
     <groupId>com.sayweee</groupId>
     <artifactId>spock.mockfree</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
+    <scope>test</scope>
 </dependency>
 ```
 Now you have the ability to mock static methods and final classes
@@ -66,7 +67,7 @@ class CallStaticMethodClassTest extends Specification {
     }
 }
 ```
-We use the @MockStatic annotation to mark which class needs to be mocked
+We use the @MockStatic annotation to mark which class needs to be mocked  
 Directly implement the static method that requires mocking under it, 
 the method signature remains the same, but the implementation is different
 
@@ -111,7 +112,7 @@ public final class Person {
     }
 }
 ```
-Even we have a private final class Address inside，Let's write a test, 
+Even we have a private final class Address inside，Let's write a test  
 there's nothing we can't mock, that's why we call it mockfree
 
 ```groovy
@@ -150,7 +151,7 @@ class PersonTest extends Specification {
         res == 'Weee!'
     }
 
-    def 'private on method is now protected'() {
+    def 'private on method is now public'() {
         setup:
         Person person = Mock()
 
@@ -164,7 +165,7 @@ class PersonTest extends Specification {
         res == 'Weee!'
     }
 
-    def 'final is removed and private on method is now protected'() {
+    def 'final is removed and private on method is now public'() {
         setup:
         Person person = Mock()
 
