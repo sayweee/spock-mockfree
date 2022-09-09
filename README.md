@@ -1,6 +1,6 @@
 ## Spock
 
-Spock is a testing and specification framework for Java and Groovy applications.
+[Spock](https://github.com/spockframework/spock) is a testing and specification framework for Java and Groovy applications.
 It combines the main advantages of JUnit, BDD and Mocking and is considered a game changer for unit testing.
 It ensures that all tests written using the framework follow BDD conventions; therefore, the test case is very readable
 and parameterized. 
