@@ -19,8 +19,8 @@ import java.util.Set;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
- * @Author: wangdengwu
- * @Date: 2022/8/27
+ * @author wangdengwu
+ * Date 2022/8/27
  */
 @AutoService(IGlobalExtension.class)
 public class GlobalExtension implements IGlobalExtension {

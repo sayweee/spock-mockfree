@@ -8,8 +8,8 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * @Author: wangdengwu
- * @Date: 2022/8/27
+ * @author wangdengwu
+ * Date 2022/8/27
  */
 @Documented
 @Target(METHOD)

@@ -18,8 +18,8 @@ import org.slf4j.Logger
 import static org.slf4j.LoggerFactory.getLogger
 
 /**
- * @Author: wangdengwu
- * @Date: 2022/8/28
+ * @author wangdengwu
+ * Date 2022/8/28
  */
 @GroovyASTTransformation(phase = CompilePhase.CANONICALIZATION)
 class MockFreeASTTransformation extends AbstractASTTransformation implements CompilationUnitAware {

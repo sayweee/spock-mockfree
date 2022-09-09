@@ -29,8 +29,8 @@ import static net.bytebuddy.matcher.ElementMatchers.*;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
- * @Author: wangdengwu
- * @Date: 2022/8/27
+ * @author wangdengwu
+ * Date 2022/8/27
  */
 public class MockfreeTransformer {
     public static final String CLASS_NAME = "MockFreeTargetClasses";
