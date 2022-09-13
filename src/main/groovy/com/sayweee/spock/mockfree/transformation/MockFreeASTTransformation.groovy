@@ -13,9 +13,6 @@ import org.codehaus.groovy.control.CompilePhase
 import org.codehaus.groovy.control.SourceUnit
 import org.codehaus.groovy.transform.AbstractASTTransformation
 import org.codehaus.groovy.transform.GroovyASTTransformation
-import org.slf4j.Logger
-
-import static org.slf4j.LoggerFactory.getLogger
 
 /**
  * @author wangdengwu
@@ -23,7 +20,6 @@ import static org.slf4j.LoggerFactory.getLogger
  */
 @GroovyASTTransformation(phase = CompilePhase.CANONICALIZATION)
 class MockFreeASTTransformation extends AbstractASTTransformation implements CompilationUnitAware {
-    private static final Logger log = getLogger(MockFreeASTTransformation)
     private static Set<ClassNode> detectedClasses = [] as Set<ClassNode>
     private static CompilationUnit compilationUnit
 

@@ -12,7 +12,6 @@ class CallStaticMethodClassTest extends Specification {
     def 'call static method is mocked method'() {
         given:
         CallStaticMethodClass callStaticMethodClass = Spy()
-        println("useStatic")
         expect:
         callStaticMethodClass.useStatic() == 'M'
     }

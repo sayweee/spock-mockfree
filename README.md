@@ -1,4 +1,8 @@
 ## Spock
+[![CI](https://github.com/sayweee/spock-mockfree/actions/workflows/maven.yml/badge.svg)](https://github.com/sayweee/spock-mockfree/actions/workflows/maven.yml)
+[![Coverage](.github/badges/jacoco.svg)](https://github.com/sayweee/spock-mockfree/actions/workflows/maven.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/com.sayweee/spock.mockfree)](https://search.maven.org/search?q=g:com.sayweee%20AND%20a:spock.mockfree)
+[![License](https://img.shields.io/badge/license-Apache%202-blue)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 [Spock](https://github.com/spockframework/spock) is a testing and specification framework for Java and Groovy applications.
 It combines the main advantages of JUnit, BDD and Mocking and is considered a game changer for unit testing.

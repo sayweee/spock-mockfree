@@ -9,7 +9,6 @@ import spock.lang.Specification
 class StaticMethodClassTest extends Specification {
     def "test static method"() {
         expect: "result is A"
-        println("execute returnA")
         StaticMethodClass.returnA() == "A"
     }
 }
