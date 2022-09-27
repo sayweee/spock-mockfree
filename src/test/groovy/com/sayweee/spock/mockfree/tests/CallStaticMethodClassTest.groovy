@@ -8,16 +8,28 @@ import spock.lang.Specification
  * Date 2022/8/27
  */
 class CallStaticMethodClassTest extends Specification {
+    static String result
 
     def 'call static method is mocked method'() {
         given:
         CallStaticMethodClass callStaticMethodClass = Spy()
-        expect:
-        callStaticMethodClass.useStatic() == 'M'
+        when:
+        result = "M"
+        then:
+        callStaticMethodClass.useReturnA() == 'M'
+        when:
+        result = "N"
+        then:
+        callStaticMethodClass.useAnother() == 'N'
     }
 
     @MockStatic(StaticMethodClass)
     public static String returnA() {
-        return "M";
+        return result
+    }
+
+    @MockStatic(StaticMethodClass)
+    public static String another() {
+        return result
     }
 }

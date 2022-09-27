@@ -15,10 +15,12 @@ import org.codehaus.groovy.control.CompilerConfiguration
 import org.codehaus.groovy.control.SourceUnit
 import spock.lang.Specification
 
+
 /**
  * @author wangdengwu
  * Date 2022/9/13
  */
+@SuppressWarnings("all")
 class MockFreeASTTransformationTest extends Specification {
     AnnotationNode annotationNode = Spy()
     ClassExpression expression = Mock()

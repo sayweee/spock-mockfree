@@ -4,6 +4,7 @@ import com.sayweee.spock.mockfree.annotation.MockFree
 import org.spockframework.mock.MockUtil
 import spock.lang.Specification
 
+@SuppressWarnings("all")
 @MockFree([Person, Person.Address])
 class PersonTest extends Specification {
 

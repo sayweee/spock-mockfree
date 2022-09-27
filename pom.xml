@@ -6,7 +6,7 @@
 
     <groupId>com.sayweee</groupId>
     <artifactId>spock.mockfree</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>mockfree</name>
     <description>
@@ -48,11 +48,11 @@
         <auto-service.version>1.0.1</auto-service.version>
         <spock-core.version>2.2-groovy-3.0</spock-core.version>
         <byte-buddy.version>1.12.16</byte-buddy.version>
-        <slf4j.version>2.0.0</slf4j.version>
-        <spock-core.version>2.2-groovy-3.0</spock-core.version>
+        <slf4j.version>2.0.1</slf4j.version>
+        <spock-core.version>2.1-groovy-3.0</spock-core.version>
         <groovy.version>3.0.12</groovy.version>
         <objenesis.version>3.2</objenesis.version>
-        <javassist.version>3.29.1-GA</javassist.version>
+        <javassist.version>3.29.2-GA</javassist.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>

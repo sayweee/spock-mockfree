@@ -8,4 +8,8 @@ public class StaticMethodClass {
     public static String returnA() {
         return "A";
     }
+
+    public static String another() {
+        return "B";
+    }
 }

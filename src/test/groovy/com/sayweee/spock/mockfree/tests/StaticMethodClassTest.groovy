@@ -7,8 +7,13 @@ import spock.lang.Specification
  * Date 2022/8/27
  */
 class StaticMethodClassTest extends Specification {
-    def "test static method"() {
+    def "test static returnA"() {
         expect: "result is A"
         StaticMethodClass.returnA() == "A"
+    }
+
+    def "test static another"() {
+        expect: "result is B"
+        StaticMethodClass.another() == "B"
     }
 }

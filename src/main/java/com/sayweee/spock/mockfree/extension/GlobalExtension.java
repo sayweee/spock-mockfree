@@ -13,6 +13,7 @@ import org.spockframework.runtime.model.SpecInfo;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,7 +28,7 @@ public class GlobalExtension implements IGlobalExtension {
     private static final Logger log = getLogger(GlobalExtension.class);
 
     private static final MockfreeTransformer mockfreeTransformer = MockfreeTransformer.getInstance();
-    private final HashMap<String, Map<String, Class<?>>> staticMethodsSpecMap = new HashMap<>();
+    private final HashMap<String, Map<Class<?>, Set<Method>>> staticMethodsSpecMap = new HashMap<>();
 
     @Override
     public void visitSpec(SpecInfo spec) {
@@ -39,11 +40,11 @@ public class GlobalExtension implements IGlobalExtension {
         spec.addSetupSpecInterceptor(new AbstractMethodInterceptor() {
             @Override
             public void interceptSetupSpecMethod(IMethodInvocation invocation) throws Throwable {
-                Map<String, Class<?>> methodMap = staticMethodsSpecMap.get(specClassName);
-                if (methodMap != null) {
-                    Set<String> methodNameSet = methodMap.keySet();
-                    for (String methodName : methodNameSet) {
-                        mockfreeTransformer.mockStaticMethod(methodName, methodMap.get(methodName), Class.forName(specClassName));
+                Map<Class<?>, Set<Method>> methodsMap = staticMethodsSpecMap.get(specClassName);
+                if (methodsMap != null) {
+                    Set<Class<?>> targetClasses = methodsMap.keySet();
+                    for (Class<?> targetClass : targetClasses) {
+                        mockfreeTransformer.mockStaticMethod(methodsMap.get(targetClass), targetClass, Class.forName(specClassName));
                     }
                 }
                 invocation.proceed();
@@ -52,9 +53,9 @@ public class GlobalExtension implements IGlobalExtension {
         spec.addCleanupSpecInterceptor(new AbstractMethodInterceptor() {
             @Override
             public void interceptCleanupSpecMethod(IMethodInvocation invocation) throws Throwable {
-                Map<String, Class<?>> methodMap = staticMethodsSpecMap.get(specClassName);
-                if (methodMap != null) {
-                    mockfreeTransformer.recoveryClasses(Iterables.toArray(methodMap.values(), Class.class));
+                Map<Class<?>, Set<Method>> methodsMap = staticMethodsSpecMap.get(specClassName);
+                if (methodsMap != null) {
+                    mockfreeTransformer.recoveryClasses(Iterables.toArray(methodsMap.keySet(), Class.class));
                 }
                 invocation.proceed();
             }
@@ -63,21 +64,24 @@ public class GlobalExtension implements IGlobalExtension {
 
     private void buildStaticMethods(SpecInfo spec, String specClassName) {
         Method[] declaredMethods = spec.getReflection().getDeclaredMethods();
+        Map<Class<?>, Set<Method>> methodsMap = new HashMap<>();
         for (Method declaredMethod : declaredMethods) {
             if (Modifier.isStatic(declaredMethod.getModifiers()) && declaredMethod.isAnnotationPresent(MockStatic.class)) {
-                String methodName = declaredMethod.getName();
                 MockStatic annotation = declaredMethod.getAnnotation(MockStatic.class);
                 Class<?> targetClass = annotation.value();
                 if (targetClass != void.class) {
-                    String alias = annotation.alias();
-                    Map<String, Class<?>> methodMap = new HashMap<>();
-                    methodMap.put(alias.isEmpty() ? methodName : alias, targetClass);
-                    staticMethodsSpecMap.put(specClassName, methodMap);
+                    Set<Method> methodSet = methodsMap.get(targetClass);
+                    if (methodSet == null) {
+                        methodSet = new HashSet<>();
+                    }
+                    methodSet.add(declaredMethod);
+                    methodsMap.put(targetClass, methodSet);
                 } else {
                     log.info("specClassName:{} use @MockStatic but lost targetClass value", specClassName);
                 }
             }
         }
+        staticMethodsSpecMap.put(specClassName, methodsMap);
     }
 
 }

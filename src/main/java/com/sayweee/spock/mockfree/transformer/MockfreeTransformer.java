@@ -19,8 +19,10 @@ import org.spockframework.runtime.extension.ExtensionException;
 import java.io.IOException;
 import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.security.ProtectionDomain;
 import java.util.Arrays;
+import java.util.Set;
 
 import static net.bytebuddy.agent.builder.AgentBuilder.RedefinitionStrategy.RETRANSFORMATION;
 import static net.bytebuddy.agent.builder.AgentBuilder.TypeStrategy.Default.REDEFINE;
@@ -61,7 +63,7 @@ public class MockfreeTransformer {
             Field declaredField = clazz.getDeclaredField(TARGET_CLASSES);
             buildAndInstallTransformer((String) declaredField.get(null));
         } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
-            log.error("installTransformer error {}", e.getMessage());
+            log.warn("installTransformer error {}", e.getMessage());
         }
     }
 
@@ -89,11 +91,14 @@ public class MockfreeTransformer {
         return Arrays.stream(classesString.split(",")).anyMatch(s -> typeDescription.getName().equals(s));
     }
 
-    public void mockStaticMethod(String methodName, Class<?> targetClass, Class<?> specClass) {
-        new ByteBuddy()
-                .redefine(targetClass)
-                .method(named(methodName)).intercept(MethodDelegation.to(specClass))
-                .make()
+    public void mockStaticMethod(Set<Method> methodsSet, Class<?> targetClass, Class<?> specClass) {
+        DynamicType.Builder<?> builder = new ByteBuddy().redefine(targetClass);
+        for (Method method : methodsSet) {
+            builder = builder
+                    .method(named(method.getName()).and(takesArguments(method.getParameterTypes())))
+                    .intercept(MethodDelegation.to(specClass));
+        }
+        builder.make()
                 .load(targetClass.getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
     }
 

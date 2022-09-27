@@ -16,6 +16,4 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface MockStatic {
     Class<?> value() default void.class;
-
-    String alias() default "";
 }

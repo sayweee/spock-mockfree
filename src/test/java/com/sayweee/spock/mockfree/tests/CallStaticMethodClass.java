@@ -5,7 +5,11 @@ package com.sayweee.spock.mockfree.tests;
  * Date 2022/8/27
  */
 public class CallStaticMethodClass {
-    public String useStatic() {
+    public String useReturnA() {
         return StaticMethodClass.returnA();
+    }
+
+    public String useAnother() {
+        return StaticMethodClass.another();
     }
 }
