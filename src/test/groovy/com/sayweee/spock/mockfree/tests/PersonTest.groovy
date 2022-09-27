@@ -40,7 +40,7 @@ class PersonTest extends Specification {
         res == 'Weee!'
     }
 
-    def 'private on method is now protected'() {
+    def 'private on method is now public'() {
         setup:
         Person person = Mock()
 
@@ -54,7 +54,7 @@ class PersonTest extends Specification {
         res == 'Weee!'
     }
 
-    def 'final is removed and private on method is now protected'() {
+    def 'final is removed and private on method is now public'() {
         setup:
         Person person = Mock()
 
@@ -68,4 +68,16 @@ class PersonTest extends Specification {
         res == 'Fremont Blvd!'
     }
 
+    def 'private final on property is removed'() {
+        setup:
+        Person person = new Person()
+
+        when:
+        person.address = new Person.Address("street")
+        person.country = "china"
+
+        then:
+        person.address.street == "street"
+        person.country == "china"
+    }
 }

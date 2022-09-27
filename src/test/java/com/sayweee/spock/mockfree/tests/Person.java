@@ -4,6 +4,9 @@ public final class Person {
 
     private String firstName = "Weee";
     private String lastName = "Weee";
+
+    private static final String country = "";
+
     private final Address address = new Address("Fremont Blvd");
 
     private Person() {

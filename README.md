@@ -86,6 +86,9 @@ public final class Person {
 
     private String firstName = "Weee";
     private String lastName = "Weee";
+
+    private static final String country = "";
+
     private final Address address = new Address("Fremont Blvd");
 
     private Person() {
@@ -182,7 +185,29 @@ class PersonTest extends Specification {
         expect:
         res == 'Fremont Blvd!'
     }
+
+    def 'private final on property is removed'() {
+        setup:
+        Person person = new Person()
+
+        when:
+        person.address = new Person.Address("street")
+        person.country = "china"
+
+        then:
+        person.address.street == "street"
+        person.country == "china"
+    }
 }
 ```
 We use the @MockFree annotation to annotate the classes that need to remove the Final Private restriction
 And That is All，make you free to mock everything！
+
+## Release Notes
+
+### 1.0.0 (2022-09-09)
+ * First Release
+### 1.0.1 (2022-09-27)
+ * Bug Fix
+### 1.0.2 (2022-09-27)
+ * Support mock final properties

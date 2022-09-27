@@ -5,6 +5,7 @@ import net.bytebuddy.agent.ByteBuddyAgent;
 import net.bytebuddy.agent.builder.AgentBuilder;
 import net.bytebuddy.agent.builder.ResettableClassFileTransformer;
 import net.bytebuddy.asm.ModifierAdjustment;
+import net.bytebuddy.description.modifier.FieldManifestation;
 import net.bytebuddy.description.modifier.MethodManifestation;
 import net.bytebuddy.description.modifier.TypeManifestation;
 import net.bytebuddy.description.type.TypeDescription;
@@ -111,6 +112,7 @@ public class MockfreeTransformer {
     private static DynamicType.Builder<?> transform(final DynamicType.Builder<?> builder, final TypeDescription typeDefinitions, final ClassLoader classLoader, final JavaModule javaModule, final ProtectionDomain protectionDomain) {
         return builder.visit(new ModifierAdjustment().withMethodModifiers(isPrivate(), PUBLIC))
                 .visit(new ModifierAdjustment().withMethodModifiers(isFinal(), MethodManifestation.PLAIN))
+                .visit(new ModifierAdjustment().withFieldModifiers(isFinal(), FieldManifestation.PLAIN))
                 .visit(new ModifierAdjustment().withTypeModifiers(isFinal(), TypeManifestation.PLAIN));
     }
 
