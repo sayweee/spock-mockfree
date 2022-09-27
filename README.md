@@ -26,7 +26,7 @@ In addition to introducing Spock dependencies, add dependencies on spock-mockfre
 <dependency>
     <groupId>com.sayweee</groupId>
     <artifactId>spock.mockfree</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <scope>test</scope>
 </dependency>
 ```
