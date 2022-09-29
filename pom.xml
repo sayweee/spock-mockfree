@@ -6,7 +6,7 @@
 
     <groupId>com.sayweee</groupId>
     <artifactId>spock.mockfree</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <name>mockfree</name>
     <description>
@@ -46,6 +46,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <auto-service.version>1.0.1</auto-service.version>
+        <junit-platform-launcher.version>1.9.1</junit-platform-launcher.version>
         <spock-core.version>2.2-groovy-3.0</spock-core.version>
         <byte-buddy.version>1.12.16</byte-buddy.version>
         <slf4j.version>2.0.1</slf4j.version>
@@ -73,6 +74,12 @@
             <groupId>com.google.auto.service</groupId>
             <artifactId>auto-service-annotations</artifactId>
             <version>${auto-service.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit-platform-launcher.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -103,6 +110,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
