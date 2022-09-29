@@ -211,3 +211,5 @@ And That is All，make you free to mock everything！
  * Bug Fix
 ### 1.0.2 (2022-09-27)
  * Support mock final properties
+### 1.0.3 (2022-09-29)
+* Add TestExecutionListener for Transformer install before @MockFree's classes is loaded
