@@ -1,6 +1,6 @@
 function fn() {
-    karate.configure('connectTimeout', 2000);
-    karate.configure('readTimeout', 2000);
+    karate.configure('connectTimeout', 10000);
+    karate.configure('readTimeout', 10000);
     let DataBasePreparer = Java.type('com.sayweee.spock.mockfree.karate.DataBasePreparer');
     let RedisPreparer = Java.type('com.sayweee.spock.mockfree.karate.RedisPreparer');
     let JwtPreparer = Java.type('com.sayweee.spock.mockfree.karate.JwtPreparer');
