@@ -143,6 +143,12 @@
             <artifactId>classgraph</artifactId>
             <version>${classgraph.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-karate</artifactId>
+            <version>2.22.0</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -2,6 +2,7 @@ package com.sayweee.spock.mockfree.karate;
 
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
+import io.qameta.allure.karate.AllureKarate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,8 +25,9 @@ public abstract class TestBase {
     void apiTest() {
         Results results = Runner
                 .path("classpath:features")
-                .outputCucumberJson(true)
-                .parallel(5);
+                .hook(new AllureKarate())
+                .outputCucumberJson(false)
+                .parallel(1);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }
 
