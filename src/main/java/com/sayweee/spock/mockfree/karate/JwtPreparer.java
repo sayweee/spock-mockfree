@@ -14,7 +14,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class JwtPreparer extends BasePreparer {
     private static final Logger log = getLogger(JwtPreparer.class);
 
-    private static final String JWT_PATH = "/core-uait-dps/token/generate";
+    private static final String JWT_PATH = CONTEXT_PATH + "/token/generate";
 
     public String gen(String userId) {
         Map<String, String> body = new HashMap<>();

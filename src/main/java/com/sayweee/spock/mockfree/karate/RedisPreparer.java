@@ -14,11 +14,11 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class RedisPreparer extends BasePreparer {
     private static final Logger log = getLogger(RedisPreparer.class);
 
-    private static final String REDIS_SET_PATH = "/core-uait-dps/redis/set";
-    private static final String REDIS_GET_PATH = "/core-uait-dps/redis/get";
-    private static final String REDIS_HSET_PATH = "/core-uait-dps/redis/hset";
-    private static final String REDIS_HGET_PATH = "/core-uait-dps/redis/hget";
-    private static final String REDIS_EXPIRE_PATH = "/core-uait-dps/redis/expire";
+    private static final String REDIS_SET_PATH = CONTEXT_PATH + "/redis/set";
+    private static final String REDIS_GET_PATH = CONTEXT_PATH + "/redis/get";
+    private static final String REDIS_HSET_PATH = CONTEXT_PATH + "/redis/hset";
+    private static final String REDIS_HGET_PATH = CONTEXT_PATH + "/redis/hget";
+    private static final String REDIS_EXPIRE_PATH = CONTEXT_PATH + "/redis/expire";
 
     public void set(int db, String key, String value) {
         Map<String, Object> params = new HashMap<>();

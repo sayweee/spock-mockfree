@@ -3,6 +3,7 @@ package com.sayweee.spock.mockfree.karate;
 import static com.sayweee.spock.mockfree.karate.LocalConfig.TEST_DATA_API_BASEURL;
 
 public abstract class BasePreparer {
+    protected static final String CONTEXT_PATH = "/ore-test-data";
     protected String testDataApiBaseUrl;
 
     BasePreparer() {

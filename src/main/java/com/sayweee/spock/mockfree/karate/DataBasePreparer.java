@@ -15,10 +15,10 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class DataBasePreparer extends BasePreparer {
     private static final Logger log = getLogger(DataBasePreparer.class);
 
-    private static final String DATABASE_SELECT_PATH = "/core-uait-dps/database/select";
-    private static final String DATABASE_UPDATE_PATH = "/core-uait-dps/database/update";
-    private static final String DATABASE_INSERT_PATH = "/core-uait-dps/database/insert";
-    private static final String DATABASE_DELETE_PATH = "/core-uait-dps/database/delete";
+    private static final String DATABASE_SELECT_PATH = CONTEXT_PATH + "/database/select";
+    private static final String DATABASE_UPDATE_PATH = CONTEXT_PATH + "/database/update";
+    private static final String DATABASE_INSERT_PATH = CONTEXT_PATH + "/database/insert";
+    private static final String DATABASE_DELETE_PATH = CONTEXT_PATH + "/database/delete";
 
     public List<?> select(String instanceName, String sqlCmd) {
         Map<String, Object> body = new HashMap<>();

@@ -4,6 +4,7 @@ function fn() {
     let DataBasePreparer = Java.type('com.sayweee.spock.mockfree.karate.DataBasePreparer');
     let RedisPreparer = Java.type('com.sayweee.spock.mockfree.karate.RedisPreparer');
     let JwtPreparer = Java.type('com.sayweee.spock.mockfree.karate.JwtPreparer');
+    let ServicePreparer = Java.type('com.sayweee.spock.mockfree.karate.ServicePreparer');
     let LocalConfig = Java.type('com.sayweee.spock.mockfree.karate.LocalConfig');
     let local_server_port = karate.properties[LocalConfig.LOCAL_SERVER_PORT];
     return {
@@ -11,5 +12,6 @@ function fn() {
         db: new DataBasePreparer(),
         jwt: new JwtPreparer(),
         redis: new RedisPreparer(),
+        service: new ServicePreparer(),
     };
 }
