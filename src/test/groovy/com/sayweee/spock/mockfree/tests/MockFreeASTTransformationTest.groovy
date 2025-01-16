@@ -22,7 +22,7 @@ import spock.lang.Specification
  */
 @SuppressWarnings("all")
 class MockFreeASTTransformationTest extends Specification {
-    AnnotationNode annotationNode = Spy()
+    AnnotationNode annotationNode = Mock()
     ClassExpression expression = Mock()
     SourceUnit sourceUnit = Mock()
     CompilationUnit compilationUnit = Spy()
@@ -32,6 +32,7 @@ class MockFreeASTTransformationTest extends Specification {
         MockFreeASTTransformation transformation = new MockFreeASTTransformation()
         when:
         annotationNode.getMember(_ as String) >> new ListExpression([expression] as List<Expression>)
+        annotationNode.getMembers() >> new HashMap<String, Expression>()
         expression.getType() >> ClassNode.THIS
         transformation.visit([annotationNode] as ASTNode[], sourceUnit)
         then:

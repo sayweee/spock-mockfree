@@ -63,6 +63,6 @@ public class RedisPreparer extends BasePreparer {
     private String doCmd(Map<String, Object> params, String path) {
         Response response = Http.to(testDataApiBaseUrl + path).post(Json.of(params));
         log.info("redis response {}", response.getBodyConverted());
-        return response.json().get("object", String.class);
+        return response.json().get("object");
     }
 }

@@ -36,6 +36,6 @@ public class JwtPreparer extends BasePreparer {
     private String getJwt(Map<String, String> params) {
         Response response = Http.to(testDataApiBaseUrl + JWT_PATH).post(Json.of(params));
         log.info("jwt response {}", response.getBodyConverted());
-        return response.json().get("object", String.class);
+        return response.json().get("object");
     }
 }

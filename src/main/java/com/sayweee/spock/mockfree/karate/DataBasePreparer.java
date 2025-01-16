@@ -20,13 +20,13 @@ public class DataBasePreparer extends BasePreparer {
     private static final String DATABASE_INSERT_PATH = CONTEXT_PATH + "/database/insert";
     private static final String DATABASE_DELETE_PATH = CONTEXT_PATH + "/database/delete";
 
-    public List<?> select(String instanceName, String sqlCmd) {
+    public List<Object> select(String instanceName, String sqlCmd) {
         Map<String, Object> body = new HashMap<>();
         body.put("instanceName", instanceName);
         body.put("sqlCmd", sqlCmd);
         Response response = Http.to(testDataApiBaseUrl + DATABASE_SELECT_PATH).post(Json.of(body));
         log.info("select response {}", response.getBodyConverted());
-        return response.json().get("object", List.class);
+        return response.json().get("object");
     }
 
     public Integer update(String instanceName, String sqlCmd) {
@@ -47,6 +47,6 @@ public class DataBasePreparer extends BasePreparer {
         body.put("sqlCmd", sqlCmd);
         Response response = Http.to(testDataApiBaseUrl + cmdPath).post(Json.of(body));
         log.info("dml response {}", response.getBodyConverted());
-        return response.json().get("object", Integer.class);
+        return response.json().get("object");
     }
 }

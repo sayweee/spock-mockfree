@@ -27,7 +27,7 @@ class MockFreeASTTransformation extends AbstractASTTransformation implements Com
     void visit(ASTNode[] nodes, SourceUnit source) {
         def annotation = nodes[0] as AnnotationNode
         detectedClasses.addAll(getClassNames(annotation) as List)
-        annotation.members.clear()
+        annotation.getMembers().clear()
     }
 
     @SuppressWarnings("all")

@@ -7,8 +7,10 @@ function fn() {
     let ServicePreparer = Java.type('com.sayweee.spock.mockfree.karate.ServicePreparer');
     let LocalConfig = Java.type('com.sayweee.spock.mockfree.karate.LocalConfig');
     let local_server_port = karate.properties[LocalConfig.LOCAL_SERVER_PORT];
+    let api_base_url = karate.properties[LocalConfig.TEST_DATA_API_BASEURL];
     return {
         baseUrl: 'http://localhost:' + local_server_port,
+        apiBaseUrl: api_base_url,
         db: new DataBasePreparer(),
         jwt: new JwtPreparer(),
         redis: new RedisPreparer(),
