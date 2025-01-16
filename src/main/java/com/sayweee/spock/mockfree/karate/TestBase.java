@@ -25,6 +25,7 @@ public abstract class TestBase {
     void apiTest() {
         Results results = Runner
                 .path("classpath:features")
+                .relativeTo(getClass())
                 .hook(new AllureKarate())
                 .outputCucumberJson(false)
                 .parallel(1);
