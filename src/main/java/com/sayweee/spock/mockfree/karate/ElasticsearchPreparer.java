@@ -14,9 +14,9 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class ElasticsearchPreparer extends BasePreparer {
     private static final Logger log = getLogger(ElasticsearchPreparer.class);
 
-    private static final String ELASTICSEARCH_QUERY_PATH = CONTEXT_PATH + "/es/query";
+    private static final String ELASTICSEARCH_QUERY_PATH = CONTEXT_PATH + "/es/search";
 
-    public Object query(String instance, String index, String dsl) {
+    public Object search(String instance, String index, String dsl) {
         Map<String, Object> body = new ImmutableMap.Builder<String, Object>()
                 .put("instance", instance)
                 .put("index", index)
